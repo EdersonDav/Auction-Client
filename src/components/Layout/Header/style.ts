@@ -6,6 +6,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 50px;
+  position: relative;
   a{
     display: flex;
     justify-content: center;
@@ -15,6 +16,15 @@ export const HeaderWrapper = styled.div`
     svg{
       margin-right:10px;
     }
+  }
+  button{
+    position: absolute;
+    right: 50px;
+    border: none;
+    font-weight: 700;
+    color: #fff;
+    background: transparent;
+    text-decoration: underline;
   }
 `
 

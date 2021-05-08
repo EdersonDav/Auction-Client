@@ -1,5 +1,6 @@
 import {useState, ChangeEvent} from 'react';
 import {AiOutlineArrowRight} from 'react-icons/ai';
+import {useHistory} from 'react-router-dom';
 
 import api from 'service/api'
 import {LoginForm, LoginWrapper} from './style';
@@ -12,6 +13,8 @@ interface ILoginInformation {
 const Login = () =>{
   const [informations, setInformations] = useState<ILoginInformation>();
 
+  const history = useHistory();
+
   const handleInformations = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInformations({ ...informations, [name]: value });
@@ -23,7 +26,8 @@ const Login = () =>{
     try{
       const response = await api.post('login', informations);
       console.log(response)
-      localStorage.setItem('-action-', response.data.id);
+      await localStorage.setItem('-action-', response.data.id);
+      history.push('/')
     }catch(err){
       alert(err.response.data.message);
     }
