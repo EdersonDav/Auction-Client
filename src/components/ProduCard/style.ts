@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const CardWrapper = styled.div`
+import {Link} from 'react-router-dom';
+
+export const CardWrapper = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,6 +14,7 @@ export const CardWrapper = styled.div`
   padding: 30px;
   cursor: pointer;
   margin: 20px auto;
+  color: #212121;
   &:hover{
     box-shadow: rgb(0 0 0 / 30%) 2px 5px 7px;
   }
@@ -19,7 +22,7 @@ export const CardWrapper = styled.div`
     width:50%;
   }
   img{
-    width: 70%;
+    width: 90%;
   }
   div:last-child{
     width:50%;
@@ -34,10 +37,11 @@ export const CardWrapper = styled.div`
   }
   p{
     font-size: 1.2rem;
+    text-align: center;
   }
   span{
     font-size: 1.2rem;
-    color: #1bac83;
+    color:#1bac83;
     font-weight: 700;
   }
   span:last-child{

@@ -1,17 +1,42 @@
 import toReal from 'helpers/toReal';
 import {CardWrapper} from './style'
 
-const Card = () =>{
+import image from 'assets/image.png'
+
+interface CardProps{
+  name: string,
+  description: string,
+  id: string,
+  price: number,
+  expiredTime: string,
+  lastBidPrice: number
+}
+
+interface Product{
+  product: CardProps;
+}
+
+const Card = ({product}:Product) =>{
+  const{
+    name,
+    description,
+    price,
+    id,
+    expiredTime,
+    lastBidPrice,
+  } = product
+  const priceShow = price > lastBidPrice ? price : lastBidPrice;
   return(
-    <CardWrapper>
+    <CardWrapper to={`product/${id}`}>
       <div>
-        <img src="" alt="Product" />
+        <img src={image} alt="Product" />
       </div>
       <div>
-        <h2>Product Name</h2>
-        <p>Product Descripition</p>
-        <span>{toReal(1300)}</span>
-        <span>Expires In: </span>
+        <h2>{name}</h2>
+        <p>{description}</p>
+        <span>Current Price: { toReal(priceShow)}</span>
+        <span style={{color: '#a3a3a3'}}>Initial Price: { toReal(price)} </span>
+        <span>Expires In: {expiredTime.split('T')[0]} </span>
       </div>
     </CardWrapper>
   )

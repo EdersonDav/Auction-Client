@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const HomeWrappers = styled.div`
   position: relative;
@@ -8,6 +8,40 @@ export const HomeWrappers = styled.div`
   padding: 12px calc(5% - 2px) 0px;
   background: linear-gradient(rgb(255, 255, 255) calc(50% + 8px), transparent 50%);
   margin-top:20px;
+  >div:last-child{
+    margin: 20px auto 50px;
+    display: flex;
+    ul{
+      display: flex;
+      list-style: none;
+      li{
+        margin-right: 20px;
+      }
+    }
+  }
+`
+ 
+interface ButtonsPagesProps{
+  currentPage: boolean;
+}
+export const ButtonsPages = styled.button`
+  font-size: 1.5rem;
+  height: 50px;
+  width:50px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 20%) 2px 3px 5px;
+  transition: all 0.3s linear 0s;
+  &:hover{
+    box-shadow: rgb(0 0 0 / 30%) 2px 5px 7px;
+  }
+  ${({currentPage}: ButtonsPagesProps) => currentPage ? css`
+    background: #fff;
+    color: #212121; 
+  `: css`
+    background: linear-gradient(97deg,#3ac7a4 0%,#1bac83 100%);
+    color: #fff; 
+  `}
 `
 
 export const SearchFilter = styled.form`
@@ -67,8 +101,8 @@ export const ProductsListDiv = styled.div`
   padding: 32px;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 100px;
-  >div{
+  margin-bottom: 20px;
+  >a{
     width: 29%;
   }
 `
